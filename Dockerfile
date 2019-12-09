@@ -15,7 +15,7 @@ ENV REGISTER_NON_INTERACTIVE=true
 ENV VPN_CONFIG=/config/vpn_config.ovpn
 ENV AUTH_FILE=/config/pass.txt
 
-HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=3 CMD [ "curl $GITLAB_URL" ]
+HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=3 CMD curl $GITLAB_URL
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
