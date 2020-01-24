@@ -1,9 +1,11 @@
 FROM gitlab/gitlab-runner:ubuntu-v12.4.0
 
 RUN apt-get update && \
-    apt install -y openvpn && \
+    apt install -y openvpn zip unzip jq && \
     rm -rf /var/lib/apt/lists/*
-
+RUN curl --location "https://github.com/mikefarah/yq/releases/download/2.4.1/yq_linux_amd64" -o yq && \
+    chmod +x yq
+    
 COPY register.sh /
 RUN chmod +x /register.sh
 COPY vpn-init.sh /
